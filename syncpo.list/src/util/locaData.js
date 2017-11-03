@@ -24,4 +24,11 @@ module.exports = {
         is_image: 'IS_IMAGE', //是否是图片格式 
         last_suffix: 'LAST_SUFFIX' //最后一个后缀名 
     }, 
+    SWITCH_TAB: [
+        {text: '会员登录', name: 'signIn', path: '/signIn'},
+        {text: '注册', name: 'signUp', path: '/signUp'}
+    ],
+    SWITCH_TAB2: [
+        {text: '忘记密码', name: 'forgetPw', path: '/forgetPw'}
+    ]    
 }

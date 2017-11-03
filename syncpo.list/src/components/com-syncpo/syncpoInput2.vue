@@ -26,9 +26,6 @@ export default {
             isError: false
         }
     },
-    mounted(){
-        console.log(this, this.value);
-    },
     computed: {
         iconClass() {
             return {
@@ -69,9 +66,9 @@ export default {
     }
     .syncpo-input-wrap {
         margin-bottom: 18px;
-        height: 48/16rem;
+        height: 3rem;
         background: #fff;
-        font-size:18/16rem;
+        font-size: 1.125rem;
         display: flex;
         align-items:center;
         border-bottom: 1px solid #ececec;        
@@ -83,16 +80,16 @@ export default {
         border-color: #D61D1D;
     }
     .syncpo-input-wrap .syncpo-input-left {
-        width: 30/16rem;
+        width: 1.875rem;
         color: #c1c1c1;        
     }
     .syncpo-input-wrap .iconfont {
-        font-size:18/16rem;
+        font-size: 1.125rem;
     }
     .syncpo-input-wrap .syncpo-input {
         width: 1rem;
-        font-size:18/16rem;
-        padding-left: 12/16rem;
+        font-size: 1.125rem;
+        padding-left: 0.75rem;
         flex: 1;
     }
     .syncpo-input-wrap .syncpo-input input {
@@ -101,7 +98,7 @@ export default {
     .syncpo-input-wrap .syncpo-input input:focus {
         font-size:inherit;
         color: #333;
-        line-height: 24/16rem;
+        line-height: 1.5rem;
         border: none;
         outline: none;
         box-shadow: none;

@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/components/Home'
 import List from '@/components/List'
-import Login from '@/components/Login'
+import SignIn from '@/components/SignIn'
+import SignUp from '@/components/SignUp'
+import Forget from '@/components/Forget'
+import ForgetPw from '@/components/ForgetPw'
 
 Vue.use(Router)
 
@@ -14,8 +18,32 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Login',
-      component: Login    	
+      name: 'Home',
+      component: Home,
+      children: [
+        {
+          path: '/signIn',
+          name: 'signIn',
+          component: SignIn
+        },
+        {
+          path: '/signUp',
+          name: 'signUp',
+          component: SignUp
+        }        
+      ]      	
+    },
+    {
+      path: '/forget',
+      name: 'forget',
+      component: Forget,
+      children: [
+        {
+          path: '/forgetPw',
+          name: 'forgetPw',
+          component: ForgetPw
+        }       
+      ]      
     }
   ]
 })

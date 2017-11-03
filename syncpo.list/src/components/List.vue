@@ -73,7 +73,7 @@
         </div>      
       </div>
     </div>
-    <router-link class="back-button" to="/">返回</router-link>
+    <router-link class="back-button" to="/signIn">返回</router-link>
   </div>
 </template>
 
@@ -94,6 +94,9 @@ export default {
   data() {
     return {
       listData: [{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
+        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
+        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
+        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
         { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' }], //props
       reasonList: [{name: "商品过期", ouid: "VKWMorAiTbW763E2I7LA0g", reasonCateOuid: "zcD_yGttRIm4SRd5SQw4nw"}], //props
       reasonTypeList: [{name: "报废", ouid: "zcD_yGttRIm4SRd5SQw4nw"}], //props
@@ -250,9 +253,6 @@ export default {
 </script>
 
 <style scoped>
-  *, *:after, *:before {
-      box-sizing: border-box;
-  }
   .flex {
     display: flex;
   }
