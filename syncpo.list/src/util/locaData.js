@@ -30,5 +30,18 @@ module.exports = {
     ],
     SWITCH_TAB2: [
         {text: '忘记密码', name: 'forgetPw', path: '/forgetPw'}
-    ]    
+    ],
+    SLIDEBAR_MENU: [
+        {text: '列表', name: 'list', path: '/list'},
+        {text: '滑动菜单', name: 'nav', path: '/nav'}
+    ],
+    SCROLL_NAV: [
+        {text: '首页', name: 'page1', path: '/page1'},
+        {text: '简介', name: 'page2', path: '/page2'},
+        {text: '我们', name: 'page3', path: '/page3'},
+        {text: '关于', name: 'page4', path: '/page4'},
+        {text: '反馈', name: 'page5', path: '/page5'},
+        {text: '建议', name: 'page6', path: '/page6'},
+        {text: '留言', name: 'page7', path: '/page7'}       
+    ]   
 }

@@ -1,77 +1,75 @@
 <template>
-  <div>
-    <div class="syncpo-default-list">
-      <div class="list-title flex flex-a-c">
-        <div class="col-1 col-line">
-          <div class="cell">
-            <syncpo-check-box :checkbox-data="checkboxAllData" :item-data="allCheckStatus"></syncpo-check-box>
+  <div class="syncpo-default-list"> 
+    <div class="list-title flex flex-a-c">
+      <div class="col-1 col-line">
+        <div class="cell">
+          <syncpo-check-box :checkbox-data="checkboxAllData" :item-data="allCheckStatus"></syncpo-check-box>
+        </div>
+      </div>
+      <div class="col-2 col-line left"><div class="cell">商品/原物料编号</div></div>
+      <div class="col-3 col-line left"><div class="cell">商品/原物料名称</div></div>
+      <div class="col-4 col-line right"><div class="cell">结算价</div></div>
+      <div class="col-5 col-line center"><div class="cell">标准单位</div></div>
+      <div class="col-6 col-line center"><div class="cell">数量</div></div>
+      <div class="col-7 col-line right"><div class="cell">金额合计</div></div>
+      <div class="col-8 col-line center"><div class="cell">原因类别</div></div>
+      <div class="col-9 col-line center"><div class="cell">原因</div></div>                                                           
+    </div>
+    <div class="list-content">
+      <div v-for="item in listData" class="list-item" :key="item.ouid">
+        <div class="flex flex-a-c">
+          <div class="col-1 col-line">
+            <div class="cell">
+              <syncpo-check-box :checkbox-data="checkItemData" :item-data="item"></syncpo-check-box>
+            </div>
+          </div>
+          <div class="col-2 col-line left"><div class="cell">{{item.skuId}}</div></div>
+          <div class="col-3 col-line left"><div class="cell">{{item.skuName}}</div></div>
+          <div class="col-4 col-line right"><div class="cell">{{item.settlePrice}}</div></div>
+          <div class="col-5 col-line center"><div class="cell">{{item.uomName}}</div></div>
+          <div class="col-6 col-line center">
+            <div class="cell">
+              <div class="default-item">
+                <div class="item-input-panel" :class="item.count && item.count > 0 ? null : 'is-error' ">
+                  <span class="required">*</span>
+                  <syncpo-input :input-data="inputData" :init-val="item.count > 0 ? item.count : null" :item-data="item"></syncpo-input>
+                </div>
+                <div class="item-error-msg">请填写正确数值</div>
+              </div>              
+            </div>
+          </div>
+          <div class="col-7 col-line right"><div class="cell">{{item.price}}</div></div>
+          <div class="col-8 col-line center">
+            <div class="cell">
+              <div class="default-item">
+                <div class="item-input-panel" :class="!item.reasonCateOuid || item.reasonCateOuid === '' ? 'is-error' : null ">
+                  <span class="required">*</span>              
+                  <syncpo-select :select-data="selectData1" :key="item.reasonCateOuid" :init-val="itemReasonCateOuidVal(item)" :options="reasonTypeList" :item-data="item"></syncpo-select>
+                </div>
+                <div class="item-error-msg">请填写原因类别</div>
+              </div>              
+            </div>
+          </div>
+          <div class="col-9 col-line center">
+            <div class="cell">
+              <div class="default-item">
+                <div class="item-input-panel" :class="!item.reasonOuid || item.reasonOuid === '' ? 'is-error' : null ">
+                  <span class="required">*</span>               
+                  <syncpo-select :select-data="selectData2" :key="item.reasonOuid" :init-val="itemReasonOuidVal(item)" :options="item.reasonList" :item-data="item"></syncpo-select>
+                </div>
+                <div class="item-error-msg">请选择原因</div>
+              </div>               
+            </div>             
           </div>
         </div>
-        <div class="col-2 col-line left"><div class="cell">商品/原物料编号</div></div>
-        <div class="col-3 col-line left"><div class="cell">商品/原物料名称</div></div>
-        <div class="col-4 col-line right"><div class="cell">结算价</div></div>
-        <div class="col-5 col-line center"><div class="cell">标准单位</div></div>
-        <div class="col-6 col-line center"><div class="cell">数量</div></div>
-        <div class="col-7 col-line right"><div class="cell">金额合计</div></div>
-        <div class="col-8 col-line center"><div class="cell">原因类别</div></div>
-        <div class="col-9 col-line center"><div class="cell">原因</div></div>                                                           
       </div>
-      <div class="list-content">
-        <div v-for="item in listData" class="list-item" :key="item.ouid">
-          <div class="flex flex-a-c">
-            <div class="col-1 col-line">
-              <div class="cell">
-                <syncpo-check-box :checkbox-data="checkItemData" :item-data="item"></syncpo-check-box>
-              </div>
-            </div>
-            <div class="col-2 col-line left"><div class="cell">{{item.skuId}}</div></div>
-            <div class="col-3 col-line left"><div class="cell">{{item.skuName}}</div></div>
-            <div class="col-4 col-line right"><div class="cell">{{item.settlePrice}}</div></div>
-            <div class="col-5 col-line center"><div class="cell">{{item.uomName}}</div></div>
-            <div class="col-6 col-line center">
-              <div class="cell">
-                <div class="default-item">
-                  <div class="item-input-panel" :class="item.count && item.count > 0 ? null : 'is-error' ">
-                    <span class="required">*</span>
-                    <syncpo-input :input-data="inputData" :init-val="item.count > 0 ? item.count : null" :item-data="item"></syncpo-input>
-                  </div>
-                  <div class="item-error-msg">请填写正确数值</div>
-                </div>              
-              </div>
-            </div>
-            <div class="col-7 col-line right"><div class="cell">{{item.price}}</div></div>
-            <div class="col-8 col-line center">
-              <div class="cell">
-                <div class="default-item">
-                  <div class="item-input-panel" :class="!item.reasonCateOuid || item.reasonCateOuid === '' ? 'is-error' : null ">
-                    <span class="required">*</span>              
-                    <syncpo-select :select-data="selectData1" :key="item.reasonCateOuid" :init-val="itemReasonCateOuidVal(item)" :options="reasonTypeList" :item-data="item"></syncpo-select>
-                  </div>
-                  <div class="item-error-msg">请填写原因类别</div>
-                </div>              
-              </div>
-            </div>
-            <div class="col-9 col-line center">
-              <div class="cell">
-                <div class="default-item">
-                  <div class="item-input-panel" :class="!item.reasonOuid || item.reasonOuid === '' ? 'is-error' : null ">
-                    <span class="required">*</span>               
-                    <syncpo-select :select-data="selectData2" :key="item.reasonOuid" :init-val="itemReasonOuidVal(item)" :options="item.reasonList" :item-data="item"></syncpo-select>
-                  </div>
-                  <div class="item-error-msg">请选择原因</div>
-                </div>               
-              </div>             
-            </div>
+      <div v-if="!listData || listData.length === 0" slot='empty' class="empty-list-data">
+        <div class="empty-content">
+          <div>
+            没有找到相关数据
           </div>
         </div>
-        <div v-if="!listData || listData.length === 0" slot='empty' class="empty-list-data">
-          <div class="empty-content">
-            <div>
-              没有找到相关数据
-            </div>
-          </div>
-        </div>      
-      </div>
+      </div>      
     </div>
     <router-link class="back-button" to="/signIn">返回</router-link>
   </div>
@@ -95,9 +93,7 @@ export default {
     return {
       listData: [{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
         { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
-        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
-        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },
-        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' }], //props
+        { cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n4spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' },{ cateName: '酒水', checked: false, count: '', error: true, price: 0, reasonCateOuid: '', reasonList: [], reasonOuid: '', settlePrice: 1, skuCateName: '菜品/酒水', skuId: '0000', skuName: '芬达', skuOuid: '_n5spDW3QGWchexZ16rsJA', stock: -16, stockType: '预制品', uomName: '升' }], //props
       reasonList: [{name: "商品过期", ouid: "VKWMorAiTbW763E2I7LA0g", reasonCateOuid: "zcD_yGttRIm4SRd5SQw4nw"}], //props
       reasonTypeList: [{name: "报废", ouid: "zcD_yGttRIm4SRd5SQw4nw"}], //props
       QuidArray: [],
@@ -285,6 +281,14 @@ export default {
     font-size: 14px;
     color: #515163;
   }
+  .list-item-panel {
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    position: relative;
+    transition: all .2s ease-in-out;
+    border-color: #e9eaec;    
+  }
   .syncpo-default-list .left {
     text-align: left;
   }
@@ -325,6 +329,7 @@ export default {
   }
   .list-title {
     font-weight: bold;
+    background-color: #f8f8f9;
   }
   .list-title .col-1,
   .list-item .col-1 {
@@ -409,7 +414,6 @@ export default {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 20px;
     background: #f0f1f4; 
   }
 </style>

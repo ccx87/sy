@@ -3,7 +3,7 @@
     <div class="signIn">
       <s-Input :inputData="memberInputData"></s-Input>
       <s-Input :inputData="passwordInputData"></s-Input>
-      <router-link class="signIn-button" to="/list">登录</router-link>
+      <router-link class="signIn-button" to="/index">登录</router-link>
       <div class="div-link">没有帐号？<router-link class="link" to="/signUp">立即注册</router-link></div>
     </div>
   </div>

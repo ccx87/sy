@@ -31,8 +31,6 @@ a {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding: 60px 0;
   background: rgb(250,250,250);
-  margin: 0;
 }
 </style>

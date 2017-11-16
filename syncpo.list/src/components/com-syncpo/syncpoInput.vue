@@ -83,7 +83,6 @@ export default {
   padding: 3px 10px;
   transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   width: 100%;
-  cursor: pointer;
 }
 .syncpo-text__input.select-input {
   padding-right: 35px;

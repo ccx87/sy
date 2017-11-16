@@ -69,6 +69,9 @@ export default {
 .syncpo-default-select .sd-select {
   position: relative;
 }
+.syncpo-default-select .sd-select input {
+  cursor: pointer !important;
+}
 .syncpo-default-select .select-icon {
   position: absolute;
   width: 35px;
