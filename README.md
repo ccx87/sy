@@ -1,2 +1,2 @@
-# syncpo.demo
-syncpo
+# sy.demo
+sy
